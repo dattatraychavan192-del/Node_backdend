@@ -49,8 +49,9 @@ app.use(express.json());
 
 app.use(
   cros({
-    origin: "*",
-    credentials: true,
+    origin: [
+      "https://post-sigma-five.vercel.app/"
+    ],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   }),
 );
