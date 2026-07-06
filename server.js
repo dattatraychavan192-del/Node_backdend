@@ -1,6 +1,6 @@
 // const http = require("http");
 const PORT = 3000;
-const cros = require("cors");
+const cors = require("cors");
 
 const express = require("express");
 const blogs = [
