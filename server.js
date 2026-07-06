@@ -39,19 +39,11 @@ const blogs = [
 
 const app = express();
 
-app.use(
-  cors({
-    origin: "https://your-frontend.vercel.app",
-  }),
-);
-
 app.use(express.json());
 
 app.use(
-  cros({
-    origin: [
-      "https://post-sigma-five.vercel.app/"
-    ],
+  cors({
+    origin: ["https://your-frontend.vercel.app"],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   }),
 );
