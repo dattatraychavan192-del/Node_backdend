@@ -1,5 +1,5 @@
 // const http = require("http");
-const PORT = process.env.PORT ||  3000;
+const PORT = process.env.PORT || 3000;
 const cors = require("cors");
 
 const express = require("express");
@@ -43,7 +43,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: ["https://your-frontend.vercel.app"],
+    origin: ["https://post-sigma-five.vercel.app/"],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   }),
 );
@@ -93,11 +93,11 @@ app.post("/blogs", (req, res) => {
 
   blogs.unshift(newBlog);
 
-  res.status(201).json({
-    success: true,
-    message: "Blog created successfully.",
-    data: newBlog,
-  });
+  // res.status(201).json({
+  //   success: true,
+  //   message: "Blog created successfully.",
+  //   data: newBlog,
+  // });
 
   res.status(404).json({
     success: false,
@@ -117,7 +117,7 @@ app.patch("/blogs/:id", (req, res) => {
     });
   }
 
-  const blog = blogs.find((b) => b.id === id);
+  const blog = blogs.findIndex((b) => b.id === id);
 
   if (!blog) {
     return res.status(404).json({
