@@ -97,16 +97,18 @@ app.post("/blogs", (req, res) => {
 
   blogs.unshift(newBlog);
 
-  // res.status(201).json({
-  //   success: true,
-  //   message: "Blog created successfully.",
-  //   data: newBlog,
-  // });
-
-  res.status(404).json({
-    success: false,
-    message: "Enter Valid Detailes...!",
+  res.status(201).json({
+    success: true,
+    message: "Blog created successfully.",
+    data: newBlog,
   });
+
+  if (blog === -1) {
+    return res.status(404).json({
+      success: false,
+      message: "Blog not found",
+    });
+  }
 });
 
 app.patch("/blogs/:id", (req, res) => {
@@ -132,7 +134,7 @@ app.patch("/blogs/:id", (req, res) => {
 
   let updateBlog = {
     ...blogs[blog],
-    ...res.body,
+    ...req.body,
   };
 
   blogs[blog] = updateBlog;
